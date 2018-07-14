@@ -34,7 +34,7 @@ function postGoal(req, res) {
 }
 
 function updateGoal(req, res) {
-    Goal.findByIdAndUpdate(req.body._id, {favorite: req.body.favorite}, {new: true}, (err, goal) => {
+    Goal.findByIdAndUpdate(req.body._id, req.body, {new: true}, (err, goal) => {
         if (err) {
             res.send(err)
         }
