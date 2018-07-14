@@ -9,6 +9,16 @@ function getGoals(req, res){
     })
 }
 
+function getGoal(req, res){
+
+    Goal.findOne({_id: req.params._id}, (err, goal) => {
+        if(err){
+            res.send(err);
+        }
+        res.json(goal);
+    });
+}
+
 function postGoal(req, res){
     let goal = new Goal();
     goal.name = req.body.name;
@@ -24,4 +34,24 @@ function postGoal(req, res){
     })
 }
 
-module.exports = {getGoals, postGoal};
+function updateGoal(req, res){
+
+    Goal.findByIdAndUpdate(req.body._id, {name: req.body.name}, {new: true}, (err, goal) => {
+        if(err){
+            res.send(err)
+        }
+        res.json({message: `${goal.name} updated`})
+    })
+}
+
+function deleteGoal(req, res){
+
+    Goal.findByIdAndDelete(req.body._id, (err, goal) => {
+        if(err){
+            res.send(err);
+        }
+        res.json({message: `${goal.name} deleted`});
+    })
+}
+
+module.exports = {getGoals, getGoal, postGoal, updateGoal, deleteGoal};

@@ -12,7 +12,7 @@ const uri = 'mongodb://YourFreedom:GetYourFreedom18@ds247430.mlab.com:47430/goal
 
 const options = {
     useNewUrlParser: true
-}
+};
 
 mongoose.connect(uri, options)
     .then( () => {}, err => { console.log(err)});
@@ -34,7 +34,12 @@ app.route(prefix + '/goals')
     .get(goal.getGoals);
 
 app.route(prefix + '/goal')
-    .post(goal.postGoal);
+    .post(goal.postGoal)
+    .put(goal.updateGoal)
+    .delete(goal.deleteGoal);
+
+app.route(prefix + '/goal/:_id')
+    .get(goal.getGoal);
 
 app.listen(port, "0.0.0.0");
 console.log('API live on port ', port);
