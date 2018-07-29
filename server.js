@@ -9,7 +9,8 @@ mongoose.Promise = global.Promise;
 const uri = 'mongodb://YourFreedom:GetYourFreedom18@ds247430.mlab.com:47430/goals_tutorial';
 
 const options = {
-    useNewUrlParser: true
+    // useNewUrlParser: true
+    useMongoClient: true
 };
 
 mongoose.connect(uri, options)
@@ -19,9 +20,10 @@ mongoose.connect(uri, options)
     });
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Methods", "PUT, DELETE");
+
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
 
     next();
 });

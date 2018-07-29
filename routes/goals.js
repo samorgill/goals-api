@@ -41,11 +41,13 @@ function postGoal(req, res) {
 
 
 function updateGoal(req, res) {
+
+    console.log(req.body._id);
     Goal.findByIdAndUpdate(req.body._id, req.body, {new: true}, (err, goal) => {
         if (err) {
             res.send(err)
         }
-        res.json({message: `${goal.name} updated`})
+        res.json({message: ` updated`})
     })
 }
 
