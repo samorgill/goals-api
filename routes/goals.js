@@ -50,11 +50,12 @@ function updateGoal(req, res) {
 }
 
 function deleteGoal(req, res) {
-    Goal.findOneAndDelete(req.body._id, (err, id) => {
+
+    Goal.findByIdAndRemove(req.params._id, (err, goal) => {
         if (err) {
             res.send(err);
         }
-        res.json({message: ` deleted`});
+        res.json({message: `${goal.name} deleted`});
     })
 }
 
