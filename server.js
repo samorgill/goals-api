@@ -21,6 +21,7 @@ mongoose.connect(uri, options)
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
     next();
 });
 
@@ -36,11 +37,11 @@ app.route(prefix + '/goals')
 
 app.route(prefix + '/goal')
     .post(goal.postGoal)
-    .put(goal.updateGoal)
-    .delete(goal.deleteGoal);
+    .put(goal.updateGoal);
 
 app.route(prefix + '/goal/:_id')
-    .get(goal.getGoal);
+    .get(goal.getGoal)
+    .delete(goal.deleteGoal);
 
 app.listen(port, "0.0.0.0");
 console.log('API live on port ', port);
