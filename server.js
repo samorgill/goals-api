@@ -49,7 +49,7 @@ app.route(prefix + '/goal/:_id')
     .get(goal.getGoal)
     .delete(goal.deleteGoal);
 
-app.listen(port, "0.0.0.0");
+app.listen(port, "127.0.0.1");
 console.log('API live on port ', port);
 
 module.exports = app;
