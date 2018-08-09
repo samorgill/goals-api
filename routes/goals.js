@@ -13,7 +13,7 @@ function getGoals(req, res) {
 function getGoal(req, res){
     let goalId = req.params._id;
 
-    Goal.findOne({id: goalId}, (err, blog) =>{
+    Goal.findOne({_id: goalId}, (err, blog) =>{
         if(err){res.send(err)}
         res.json(blog);
     })
