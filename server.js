@@ -10,7 +10,7 @@ const uri = 'mongodb://YourFreedom:GetYourFreedom18@ds247430.mlab.com:47430/goal
 
 const options = {
     // useNewUrlParser: true
-    useNewUrlParser: true
+    useMongoClient: true
 };
 
 mongoose.connect(uri, options)
