@@ -18,6 +18,7 @@ function getGoal(req, res) {
     });
 }
 
+// del
 function postGoal(req, res) {
     let goal = new Goal();
     let gName = req.body.name;
