@@ -9,13 +9,14 @@ function getGoals(req, res) {
     })
 }
 
-function getGoal(req, res) {
-    Goal.findOne({_id: req.params._id}, (err, goal) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json(goal);
-    });
+
+function getGoal(req, res){
+    let goalId = req.params._id;
+
+    Goal.findOne({id: goalId}, (err, blog) =>{
+        if(err){res.send(err)}
+        res.json(blog);
+    })
 }
 
 // del
