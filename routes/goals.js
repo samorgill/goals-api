@@ -9,7 +9,6 @@ function getGoals(req, res) {
     })
 }
 
-
 function getGoal(req, res){
     let goalId = req.params._id;
 
@@ -19,7 +18,6 @@ function getGoal(req, res){
     })
 }
 
-// del
 function postGoal(req, res) {
     let goal = new Goal();
     let gName = req.body.name;
